@@ -1,0 +1,305 @@
+/******************************************************************************
+
+ YIJUN LIU
+
+ LAB#05    Week 5
+
+ Problem:
+
+ 1. Find multiplication of two matrices. 
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int main()
+{
+
+    int a,b,i=0,j=0,k=0,fst[100][100],secnd[100][100],sum[100][100];
+
+    printf("Enter 2-dimensional array size: ");
+    scanf("%d%d",&a,&b);
+    printf("Enter numbers for each element in two arrays: ");
+
+    for(i=0;i<a;i++){
+        for(j=0;j<b;j++){
+            scanf("%d",&fst[i][j]);
+        }
+    }
+    for(i=0;i<b;i++){
+        for(j=0;j<a;j++){
+            scanf("%d",&secnd[i][j]);
+        }
+    }
+    
+    // multiplication and save the results into the matrix sum
+    // k is for locating the index for these two original marixes
+
+    for(i=0;i<a;i++){
+        for(j=0;j<a;j++){
+            for(k=0;k<b;k++){
+                sum[i][j]+=fst[i][k]*secnd[k][j];
+            }
+        }
+    }
+    
+    printf("\nResult after multiplication of two arrays: \n");
+
+    // print out the sum[][]
+
+    for(i=0;i<a;i++){
+        for(j=0;j<a;j++){
+            printf("%d ",sum[i][j]);
+        }
+    printf("\n");
+    } 
+    
+    
+    return 0;
+}
+
+
+
+
+
+
+/******************************************************************************
+
+ YIJUN LIU
+
+ LAB#05    Week 5
+
+ Problem:
+
+ 2. Swap two numbers by pointer  
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int main()
+{
+    int a,b,temp,*p,*ptr;
+    printf("Enter two numbers a & b:  ");
+    scanf("%d%d",&a,&b);
+    p=&a;
+    ptr=&b;
+    
+    temp= *p;
+    *p=*ptr;
+    *ptr=temp;
+    
+    printf("After swapping by pointer, a = %d, b= %d ",a,b);
+    
+    return 0;
+}
+
+
+
+
+
+/******************************************************************************
+
+ YIJUN LIU
+
+ LAB#05    Week 5
+
+ Problem:
+
+ 3. Study built-in functions "gets()", "puts() ","getchar()", "putchar()" in C language about string & char process. And then write program to input and output of a string   
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+
+{
+    char str[100];
+
+    printf("Enter any string: ");
+    gets(str);
+    printf("Result: ");
+    puts(str);
+
+    return 0;
+}
+
+
+
+#include <stdio.h>
+
+int main()
+{
+    int chr,counter=0;
+    printf("Enter any string: ");
+    
+    while((chr=getchar())!=EOF){
+        if(counter == 0){
+          printf("Result:");
+          counter++;
+        }
+        putchar(chr);
+    }
+    return 0;
+}
+
+
+
+
+
+
+/******************************************************************************
+
+ YIJUN LIU
+
+ LAB#05    Week 5
+
+ Problem:
+
+ 4. Find factorial of a number using recursion   
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    long int fac(int n)
+    {
+        if(n>=1)
+            return n*fac(n-1);
+        else
+            return 1; 
+    }
+    
+    printf("Enter a number: ");
+    scanf("%d",&n);
+    printf("Factorial= %ld",fac(n));
+
+    return 0;
+}
+
+
+
+
+
+
+/******************************************************************************
+
+ YIJUN LIU
+
+ LAB#05    Week 5
+
+ Problem:
+
+ 5. Study functions "strcpy()" and "strrev()" in C language, and then write a program to check if a string is palindrome or not   
+
+*******************************************************************************/
+
+
+////////////////////////////////////  ------Method 1
+
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <math.h>
+int main()
+{
+    char str[100],rev[100];
+    printf("Enter a string: ");
+    gets(str);
+    strcpy(rev,str);
+    if(strcmp(str,strrev(rev))==0)
+    {
+        printf("Result: yes, it is a palindrome string");
+    }
+    else
+        printf("Result: not a palindrome string ");
+
+    return 0;
+}
+
+
+
+////////////////////////////////////  ------Method 2
+
+
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <math.h>
+int main()
+{
+    char str[1000],rev[1000];
+    int d;
+    printf("Enter a string: ");
+    gets(str);
+  
+    strcpy(rev,str);
+    d=strcmp(str,strrev(rev));
+
+    //printf("\n%d\n",d);
+
+    if(d==0){
+        printf("Result: yes, it is a palindrome string");}
+    else
+        printf("Result: not a palindrome string");
+    //if(strcmp(str,strrev(str))==0)
+    //{
+        //printf("Result: yes, it is a palindrome string");
+    //}
+    //else
+        //printf("Result: not a palindrome string ");
+
+    return 0;
+}
+
+
+
+
+
+
+/******************************************************************************
+
+ YIJUN LIU
+
+ LAB#05    Week 5
+
+ Problem:
+
+ 6. Merging one-dimensional array - excluding repeating element    
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int main()
+{  
+    int a,b,c,fst[a],scnd[b],i,j,k;
+    
+    printf("Enter the size of 1st array: "); 
+    scanf("%d",&a);
+    printf("Enter each element: ");
+    for(i=0;i<a;i++){
+        scanf("%d",&fst[i]);
+    }
+    
+    printf("Enter the size of 2nd array: ");
+    scanf("%d",&b);
+    printf("Enter each element: ");
+    for(j=0;j<b;j++){
+        scanf("%d",& scnd[j]);
+    }
+    
+    
+    for(k=0;k<)
+    
+    
+
+    return 0;
+}
