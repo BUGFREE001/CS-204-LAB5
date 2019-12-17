@@ -314,56 +314,39 @@ int main()
 
 #7
 
-#include <stdio.h> 
-  
-int print(int max) 
-{ 
-    for (int m = 0; m <= max; m++) { 
-        printf("%2d", m); 
-        int bi = 1; 
-        for (int x = 0; x <= m; x++) { 
-            if (m != 0 && x != 0) 
-                bi = bi * (m - x + 1) / x; 
-            printf("%4d", bi); 
-        } 
-        printf("\n"); 
-    } 
-} 
-  
+#include <stdio.h>
 
-int main() 
-{ 
-    int max = 10; 
-    print(max); 
-    return 0; 
-} #include <stdio.h> 
-  
-void print();
-  
-int main() 
-{ 
-    int s;
-    printf("Enter the order of binomial power expression: ") ;
-    scanf("%d", &s);
-    printf("Results of printing on monitor: \n");
-    print(s); 
-    return 0; 
-} 
-
-void print(int s) 
-{ 
-    for (int m = 0; m <= s; m++) { 
-      int bi = 1; 
-      for (int x = 0; x <= m; x++) { 
-        if (m != 0 && x != 0) {
-          bi= bi * (m - x + 1) / x; 
-        }
-          printf("%5d", bi); 
-      } 
-        printf("\n"); 
-    } 
+//find factorial
+int fact(int n)
+{
+   if(n==0)
+   return(1);
+   int prod = 1;
+   for (int i=1;i<=n;i++)
+{
+   prod*=i;
+}
+return(prod);
 }
 
+//find binomial coefficient \binom{n}{k}
+int binom(int n,int k){
+   return(fact(n)/fact(k)/fact(n-k));
+}
+
+int main() {
+int n;
+printf("Enter the order of binomial power expression: ");
+scanf("%d",&n);
+for (int i=0;i<=n;i++)
+{
+for (int j=0;j<=i;j++)
+   printf("%d ",binom(i,j));
+   printf("\n");
+   }
+  
+return 0;
+}
 
 
 --------------------------------------------------------------------------------------------------------------------------------
