@@ -279,29 +279,65 @@ int main()
 #include <stdio.h>
 
 int main()
-{  
-    int a,b,c,fst[a],scnd[b],i,j,k;
+
+{
+
+    int n,m;
+
+    //declaring arrays with max limit
+
+    int ar1[50],ar2[50],res[100];
+
+    //inputs
+    printf("Enter the size of 1sr array: ");
+    scanf("%d",&n);
+    printf("Enter each Element :");
+    for(int i=0;i<n;i++)
+        scanf("%d",&ar1[i]);
+        printf("Enter the size of 2nd array:");
+    scanf("%d",&m);
+    printf("Enter each Element :");
+    for(int i=0;i<m;i++)
+        scanf("%d",&ar2[i]);
+
+    //size of the resultant array
+
+    int c=m+n;
+
+    //copying data
     
-    printf("Enter the size of 1st array: "); 
-    scanf("%d",&a);
-    printf("Enter each element: ");
-    for(i=0;i<a;i++){
-        scanf("%d",&fst[i]);
+    for(int i=0;i<n;i++)
+        res[i]=ar1[i];
+    for(int i=0;i<m;i++)
+        res[n+i]=ar2[i];
+	
+    //deleting duplicate elements
+    for(int i=0; i<c; i++)
+    {
+        for(int j=i+1; j<c; j++)
+        {
+            /* if duplicate */
+            if(res[i] == res[j])
+            {
+                /* Delete the current duplicate element */
+                for(int k=j; k<c; k++)
+                {
+                    res[k] = res[k + 1];
+                }
+                /* decrement the size due to deleted element */
+                c--;
+                /* check again for jth element */
+                j--;
+            }
+        }
     }
-    
-    printf("Enter the size of 2nd array: ");
-    scanf("%d",&b);
-    printf("Enter each element: ");
-    for(j=0;j<b;j++){
-        scanf("%d",& scnd[j]);
-    }
-    
-    
-    for(k=0;k<)
-    
-    
+
+    printf("Result of Merging : ");
+    for(int i=0;i<c;i++)
+        printf("%d ",res[i]);
 
     return 0;
+
 }
 
 
