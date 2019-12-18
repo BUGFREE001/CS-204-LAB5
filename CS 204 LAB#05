@@ -160,26 +160,24 @@ int main()
 
 *******************************************************************************/
 
-#include <stdio.h>
+#include<stdio.h>
 
-int main()
-{
+long int multiplyNumbers(int n);
+
+int main() {
     int n;
-    long int fac(int n)
-    {
-        if(n>=1)
-            return n*fac(n-1);
-        else
-            return 1; 
-    }
-    
-    printf("Enter a number: ");
+    printf("Enter a positive integer: ");
     scanf("%d",&n);
-    printf("Factorial= %ld",fac(n));
-
+    printf("Factorial of %d = %ld", n, multiplyNumbers(n));
     return 0;
 }
 
+long int multiplyNumbers(int n) {
+    if (n>=1)
+        return n*multiplyNumbers(n-1);
+    else
+        return 1;
+}
 
 
 
